@@ -4,23 +4,23 @@ public class ArrayQueue<T> implements Queue<T>{
 	int front = 0;
 	int back = 0;
 
-	public boolean empty(){
+	public boolean empty(){//checks if queue is empty
 		return front == back;
 	}
-	public T dequeue(){
+	public T dequeue(){//removes item from queue
 		//if(empty())
 		//	throw new IllegalStateException("Queue is already empty");
 		T item = a[front];
 		front = (front+1)% a.length;
 		return item;
 	}
-	public void enqueue(T item){
+	public void enqueue(T item){//adds item to queue
 		if((back+1)% a.length == front)
 			grow_array();
 		a[back++] = item;
 		back = back%a.length;
 	}
-	public void grow_array() {
+	public void grow_array(){//function to double the size of the array
 		T[] new_a = (T[]) new Object[a.length*2];
 		if(back > front)
 		{
